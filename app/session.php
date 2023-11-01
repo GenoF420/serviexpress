@@ -23,15 +23,31 @@ class Session
         return self::$instances[$cls];
     }
 
-    public function __get($name) {
-        if (isset($_SESSION[$name])) {
-            return $_SESSION[$name];
-        } else {
-            return null;
+    public function Get($key) {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            if(isset($_SESSION[$key])) {
+                return $_SESSION[$key];
+            }
+        }
+        return null;
+    }
+
+    public function Set($key, $val) {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION[$key] = $val;
         }
     }
 
     public function Destroy() {
         session_destroy();
+    }
+
+    public function Authenticate($email, $password): true|string
+    {
+        if($email == "juan@serviexpress.cl" && $password == "1234567890") {
+            return true;
+        } else {
+            return "Credenciales invalidas!";
+        }
     }
 }
