@@ -14,6 +14,7 @@ type HTTP struct {
 
 type Database struct {
 	Host     string `koanf:"host"`
+	Port     int    `koanf:"port"`
 	Database string `koanf:"database"`
 	Username string `koanf:"username"`
 	Password string `koanf:"password"`
