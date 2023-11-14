@@ -35,6 +35,8 @@ func New(cfgOpts ...config.Option) (*Server, error) {
 
 	db := database.Create(*cfg)
 
+	app.RegisterView(iris.Blocks("./web/views", ".html").Reload(cfg.HTTP.Debug))
+
 	server := &Server{
 		Application:   app,
 		Configuration: cfg,
