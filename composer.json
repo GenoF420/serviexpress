@@ -1,6 +1,0 @@
-{
-    "require": {
-        "bramus/router": "~1.6",
-        "rawsrc/phpecho": "^6.1"
-    }
-}
